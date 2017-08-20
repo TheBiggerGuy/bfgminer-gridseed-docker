@@ -2,7 +2,7 @@
 
 BUILD_DEPS="git ca-certificates \
             build-essential autoconf automake libtool pkg-config \
-            libcurl4-gnutls-dev libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev libevent-dev libmicrohttpd-dev"
+            libcurl4-gnutls-dev libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev libevent-dev"
 RUNTIME_DEPS="ca-certificates"
 
 export DEBIAN_FRONTEND=noninteractive
@@ -13,7 +13,7 @@ apt-get install -y --no-install-recommends ${BUILD_DEPS}
 git clone --depth=1 https://github.com/luke-jr/bfgminer.git
 cd bfgminer
 ./autogen.sh
-./configure --disable-other-drivers --enable-gridseed --enable-scrypt
+./configure --disable-other-drivers --enable-gridseed --enable-scrypt --without-libmicrohttpd
 make -j 2
 make install
 cd ../

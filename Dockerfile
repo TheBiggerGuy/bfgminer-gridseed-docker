@@ -5,3 +5,4 @@ COPY build.sh /
 RUN /build.sh; rm /build.sh
 
 ENTRYPOINT ["bfgminer"]
+CMD ["--text-only"]
