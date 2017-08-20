@@ -1,4 +1,5 @@
 FROM arm32v7/debian:stretch-slim
+MAINTAINER Guy Taylor <thebigguy.co.uk@gmail.com>
 
 ARG BUILD_DEPS="git ca-certificates \
                 build-essential autoconf automake libtool pkg-config \
@@ -7,7 +8,8 @@ ARG RUNTIME_DEPS="ca-certificates"
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update; \
-    apt-get install -y --no-install-recommends ${BUILD_DEPS} ${RUNTIME_DEPS}
+    apt-get install -y --no-install-recommends ${RUNTIME_DEPS}; \
+    apt-get install -y --no-install-recommends ${BUILD_DEPS}
 
 RUN git clone --depth=1 https://github.com/luke-jr/bfgminer.git; \
     cd bfgminer; \
