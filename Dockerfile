@@ -20,5 +20,7 @@ RUN git clone --depth=1 https://github.com/luke-jr/bfgminer.git; \
     echo '/usr/local/lib' > /etc/ld.so.conf.d/usrlocal.conf; \
     ldconfig
 
-RUN apt-get purge ${BUILD_DEPS}; \
+RUN apt-get purge -y ${BUILD_DEPS}; \
     rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ["bfgminer"]
