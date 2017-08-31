@@ -22,5 +22,6 @@ echo '/usr/local/lib' > /etc/ld.so.conf.d/usrlocal.conf
 ldconfig
 
 apt-get purge -y ${BUILD_DEPS}
+apt-get install -y --no-install-recommends ${RUNTIME_DEPS}
 rm -rf /var/lib/apt/lists/*
 
