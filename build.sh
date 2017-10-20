@@ -15,7 +15,8 @@ apk add --no-cache ${BUILD_DEPS}
 mkdir -p /usr/include/sys
 echo '#include <unistd.h>' > /usr/include/sys/unistd.h
 
-git clone --depth=100 --shallow-submodules --recurse-submodules https://github.com/TheBiggerGuy/bfgminer.git
+# TODO: --shallow-submodules
+git clone --depth=100 --recurse-submodules https://github.com/TheBiggerGuy/bfgminer.git
 cd bfgminer
 ./autogen.sh
 ./configure --disable-other-drivers --enable-gridseed --enable-scrypt --without-libmicrohttpd
