@@ -1,8 +1,9 @@
-FROM arm32v7/debian:stretch-slim
+FROM amd64/alpine:3.6
 MAINTAINER Guy Taylor <thebigguy.co.uk@gmail.com>
 
-COPY build.sh /
-RUN /build.sh; rm /build.sh
+COPY build.sh /build/build.sh
+WORKDIR /build
+RUN /build/build.sh; rm -rf /build
 
 ENTRYPOINT ["bfgminer"]
 CMD ["--text-only"]
