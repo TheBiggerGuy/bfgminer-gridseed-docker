@@ -1,4 +1,4 @@
-FROM amd64/alpine:3.6
+FROM multiarch/alpine:amd64-v3.6
 MAINTAINER Guy Taylor <thebigguy.co.uk@gmail.com>
 
 COPY build.sh /build/build.sh

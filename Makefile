@@ -1,7 +1,7 @@
 .PHONY: container push
 
 Dockerfile.arm32v6: Dockerfile
-	cat Dockerfile | sed -e 's/amd64/arm32v6/g' > Dockerfile.arm32v6
+	cat Dockerfile | sed -e 's/amd64/armhf/g' > Dockerfile.arm32v6
 
 Dockerfile.amd64: Dockerfile
 	cat Dockerfile > Dockerfile.amd64
