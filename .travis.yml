@@ -15,5 +15,5 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}";
-    make "release-${ARCH}"
+    docker push "thebiggerguy/bfgminer-gridseed-docker:latest-${ARCH}"
     fi
