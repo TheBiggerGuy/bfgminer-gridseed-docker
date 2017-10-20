@@ -1,19 +1,24 @@
-.PHONY: container push
+# Config
+DOCKER_IMAGE ?= thebiggerguy/bfgminer-gridseed-docker
+# amd64, arm32v6 or arm32v7
+ARCH ?= amd64
 
-Dockerfile.arm32v6: Dockerfile
-	cat Dockerfile | sed -e 's/amd64/armhf/g' > Dockerfile.arm32v6
+# Auto config
+GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
 
-Dockerfile.amd64: Dockerfile
-	cat Dockerfile > Dockerfile.amd64
+# Make config
+.PHONY: container build-$(ARCH) release-$(ARCH)
 
-build-arm32v6: Dockerfile.arm32v6
-	docker build -t thebiggerguy/bfgminer-gridseed-docker:latest-arm32v6 --file Dockerfile.arm32v6 .
+# Targets
+build: build-$(ARCH)
 
-build-amd64: Dockerfile.amd64
-	docker build -t thebiggerguy/bfgminer-gridseed-docker:latest-arm32v6 --file Dockerfile.amd64 .
+Dockerfile.$(ARCH): Dockerfile
+	cat Dockerfile | sed -e 's/amd64/$(ARCH)/g' > Dockerfile.$(ARCH)
 
-release-arm32v6: build-arm32v6
-	docker push thebiggerguy/bfgminer-gridseed-docker:latest-arm32v6
+build-$(ARCH): Dockerfile.$(ARCH)
+	docker build -t $(DOCKER_IMAGE):latest-$(ARCH) \
+	             --build-arg VCS_REF=$(GIT_COMMIT) \
+	             --file Dockerfile.$(ARCH) .
 
-release-arm64: build-amd64
-	docker push thebiggerguy/bfgminer-gridseed-docker:latest-amd64
+release-$(ARCH): build-$(ARCH)
+	docker push $(DOCKER_IMAGE):latest-$(ARCH)
