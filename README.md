@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TheBiggerGuy/bfgminer-gridseed-docker.svg?branch=travis)](https://travis-ci.org/TheBiggerGuy/bfgminer-gridseed-docker)
+
 # bfgminer-gridseed-docker
 BFGMiner with Gridseed enabled in a Docker container for ARM
 
