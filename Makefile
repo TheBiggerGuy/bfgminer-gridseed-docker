@@ -1,6 +1,6 @@
 # Config
 DOCKER_IMAGE ?= thebiggerguy/bfgminer-gridseed-docker
-# amd64, arm32v6 or arm32v7
+# amd64 or armhf
 ARCH ?= amd64
 
 # Auto config

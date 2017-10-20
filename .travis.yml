@@ -8,7 +8,7 @@ before_install:
 env:
   matrix:
     - ARCH=amd64
-    - ARCH=arm32v6
+    - ARCH=armhf
 
 script:
   - make "build-${ARCH}"
