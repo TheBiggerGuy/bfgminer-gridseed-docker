@@ -3,6 +3,16 @@ services:
   - docker
 before_install:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+
+env:
+  matrix:
+    - ARCH=amd64
+    - ARCH=arm32v6
+
 script:
-  - make build-amd64
-  - make build-arm32v6
+  - make "build-${ARCH}"
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}";
+    make "release-${ARCH}"
+    fi
