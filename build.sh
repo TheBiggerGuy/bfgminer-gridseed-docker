@@ -6,7 +6,7 @@ set -x
 BUILD_DEPS="git ca-certificates \
             gcc g++ autoconf automake make libtool pkgconf \
             curl-dev jansson-dev uthash-dev ncurses-dev libusb-dev libevent-dev libgcrypt-dev linux-headers"
-RUNTIME_DEPS="ca-certificates libcurl jansson uthash ncurses5 libusb libevent"
+RUNTIME_DEPS="ca-certificates libcurl jansson uthash ncurses libusb libevent"
 
 apk add --no-cache ${RUNTIME_DEPS}
 apk add --no-cache ${BUILD_DEPS}
