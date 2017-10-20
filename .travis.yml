@@ -22,3 +22,8 @@ after_success:
     docker tag "thebiggerguy/bfgminer-gridseed-docker:latest-${ARCH}" "thebiggerguy/bfgminer-gridseed-docker:dev-${ARCH}"
     docker push "thebiggerguy/bfgminer-gridseed-docker:dev-${ARCH}";
     fi
+
+notifications:
+  - webhooks:
+    - urls:
+      - https://hooks.microbadger.com/images/thebiggerguy/bfgminer-gridseed-docker/_demZNPh20y9rXxRTbWM0i8cxqc=
