@@ -15,5 +15,10 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}";
-    docker push "thebiggerguy/bfgminer-gridseed-docker:latest-${ARCH}"
+    docker push "thebiggerguy/bfgminer-gridseed-docker:latest-${ARCH}";
+    fi
+  - if [ "$TRAVIS_BRANCH" == "dev" ]; then
+    docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}";
+    docker tag "thebiggerguy/bfgminer-gridseed-docker:latest-${ARCH}" "thebiggerguy/bfgminer-gridseed-docker:dev-${ARCH}"
+    docker push "thebiggerguy/bfgminer-gridseed-docker:dev-${ARCH}";
     fi
